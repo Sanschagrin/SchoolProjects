@@ -1,0 +1,51 @@
+#Gregory Mah 041114855
+#CST 8002 020
+#Stanley Pieda
+
+#Import csv and record to read dataset and to store records as Record objects to be read.
+import csv
+import Record
+
+#Variable to store name of dataset file to be used to access file
+csvData = "Nitrogen oxide emissions by facility.csv"
+
+#Method to handle CSV reading using the variable csvData with dataset name
+def CSVReader(csvData):
+    #Initialize array to store record objects from the dataset
+    records = []
+
+    try:
+        #Open CSV file using csvData variable
+        with open(csvData) as file:
+
+            #Create reader variable to use csv Dictionary Reader to read CSV
+            reader = csv.DictReader(file)
+
+            #Loop through dataset and track how many records are read
+            for i, row in enumerate(reader):
+
+                #Use only a few records as per assignment instructions
+                if i >= 3:
+                    break
+
+                #Instantiate record object for current iteration of loop
+                record = Record.Record(
+                    NPRID = row["NPRI ID"], facility = row["Facility name"], company = row["Company name"], 
+                    address = row["Address"], city = row["City"], province = row["Province"], postal = row["PostalCode"], 
+                    lat = row["Latitude"], long = row["Longitude"], emissions = row["Emissions"], units = row["Units"], 
+                    details = row["Facility details"], info = row["Facility information"], year = row["Report year"]
+                )
+
+                #Add new record to records array
+                records.append(record)
+
+    #Exception handling for file not found with error message
+    except FileNotFoundError:
+        print("File could not be located")
+
+    #Exception handling for other exceptions    
+    except Exception as e:
+        print(f"ERROR: {e}")
+        
+    #Return records array after being populated
+    return records
