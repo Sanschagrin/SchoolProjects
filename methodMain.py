@@ -1,6 +1,7 @@
 #Gregory Mah 041114855
-#CST 8002 020
+#CST 8002 020 Programming Language Research Proj
 #Stanley Pieda
+#Due 2025-05-25
 
 #Import csv and record to read dataset and to store records as Record objects to be read.
 import csv

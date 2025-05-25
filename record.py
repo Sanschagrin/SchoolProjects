@@ -1,6 +1,7 @@
 #Gregory Mah 041114855
-#CST 8002 020
+#CST 8002 020 Programming Language Research Proj
 #Stanley Pieda
+#Due 2025-05-25
 
 #This is the record class that will represent objects from the Nitrogen oxide emissions by facility dataset.
 class Record:
