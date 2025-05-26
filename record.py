@@ -8,7 +8,7 @@ class Record:
 
     #This method signified by the 'def' keyword or defined. It is the constructor for the record class and allows records to be instantiated
     def __init__(self, NPRID, facility, company, address, city, province, postal, lat, long, emissions, units, details, info, year):
-        #A list of Parameters from the data set with matching variables to hold their values in the object
+        """A list of Parameters from the data set with matching variables to hold their values in the object"""
         self.NPRID = NPRID
         self.facility = facility
         self.company = company
@@ -24,6 +24,6 @@ class Record:
         self.info = info
         self.year = year
     
-    #String method to return record object in the form of a string.
     def __str__(self):
+        """String method to return record object in the form of a string."""
         return f"NPRID: {self.NPRID}, {self.facility}, {self.company}, {self.address}, {self.city}, {self.province}, {self.postal}, {self.lat}, {self.long},  {self.emissions}, {self.units}, {self.details}, {self.info}, {self.year}"

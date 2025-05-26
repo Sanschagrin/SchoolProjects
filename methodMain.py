@@ -12,24 +12,24 @@ csvData = "Nitrogen oxide emissions by facility.csv"
 
 #Method to handle CSV reading using the variable csvData with dataset name
 def CSVReader(csvData):
-    #Initialize array to store record objects from the dataset
+    """Initialize array to store record objects from the dataset"""
     records = []
 
     try:
-        #Open CSV file using csvData variable
+        """Open CSV file using csvData variable"""
         with open(csvData) as file:
 
-            #Create reader variable to use csv Dictionary Reader to read CSV
+            """Create reader variable to use csv Dictionary Reader to read CSV"""
             reader = csv.DictReader(file)
 
-            #Loop through dataset and track how many records are read
+            """Loop through dataset and track how many records are read"""
             for i, row in enumerate(reader):
 
-                #Use only a few records as per assignment instructions
+                """Use only a few records as per assignment instructions"""
                 if i >= 3:
                     break
 
-                #Instantiate record object for current iteration of loop
+                """Instantiate record object for current iteration of loop"""
                 record = Record.Record(
                     NPRID = row["NPRI ID"], facility = row["Facility name"], company = row["Company name"], 
                     address = row["Address"], city = row["City"], province = row["Province"], postal = row["PostalCode"], 
@@ -37,7 +37,7 @@ def CSVReader(csvData):
                     details = row["Facility details"], info = row["Facility information"], year = row["Report year"]
                 )
 
-                #Add new record to records array
+                """Add new record to records array"""
                 records.append(record)
 
     #Exception handling for file not found with error message
@@ -54,12 +54,12 @@ def CSVReader(csvData):
 #Main method to run the program
 if __name__ == "__main__":
 
-    #Print my my name on to terminal so it is always visible
+    """Print my my name on to terminal so it is always visible"""
     print("Gregory Mah 041114855")
 
-    #Set records array to hold value returned by CSVReader method
+    """Set records array to hold value returned by CSVReader method"""
     records = CSVReader(csvData)
 
-    #Loop through and print the list of objects
+    """Loop through and print the list of objects"""
     for record in records:
         print(record)
