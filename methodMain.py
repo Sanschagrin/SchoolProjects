@@ -5,7 +5,7 @@
 
 #Import csv and record to read dataset and to store records as Record objects to be read.
 import csv
-import Record
+import model.Record as Record
 
 #Variable to store name of dataset file to be used to access file
 csvData = "Nitrogen oxide emissions by facility.csv"
@@ -23,10 +23,10 @@ def CSVReader(csvData):
             reader = csv.DictReader(file)
 
             """Loop through dataset and track how many records are read"""
-            for i, row in enumerate(reader):
+            for dataSet, row in enumerate(reader):
 
                 """Use only a few records as per assignment instructions"""
-                if i >= 3:
+                if dataSet >= 3:
                     break
 
                 """Instantiate record object for current iteration of loop"""
