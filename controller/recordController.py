@@ -18,4 +18,13 @@ class recordController:
         CSVSaver(self.records, new_filename)
         self.view.message(f"Data saved to {new_filename}")
 
-    
+    def display_single_record(self):
+        NPRIID = self.view.userID()
+        data = next((r for r in self.records if r.NPRID == NPRIID), None)
+        if data:
+            self.view.displayRecord(data)
+        else:
+            self.view.error("Record not found.")
+
+    def display_all_records(self):
+        self.view.allRecords(self.records)
