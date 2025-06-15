@@ -51,4 +51,12 @@ class recordController:
             message("Record updated.")
         else:
             error("Record not found.")
-    
+
+    def deleteRecord(self):
+        NPRIID = userID()
+        record = next((r for r in self.records if r.NPRID == NPRIID), None)
+        if record:
+            self.records.remove(record)
+            message("Record deleted.")
+        else:
+            error("Record not found.")
