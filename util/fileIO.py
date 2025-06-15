@@ -59,7 +59,7 @@ def CSVSaver(record, csvData):
         
             writer = csv.writer(file)
 
-            writer.writerrow([
+            writer.writerow([
                 "NPRI ID", "Facility name", "Company name", "Address", "City", "Province", "PostalCode", 
                 "Latitude", "Longitude", "Emissions", "Units", "Facility details", "Facility information",
                 "Report year"

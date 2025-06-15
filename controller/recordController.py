@@ -4,27 +4,39 @@
 #Due 2025-06-15
 
 from model.Record import Record
-from view.recordView import recordView
-from util.fileIO import fileIO
+from view.recordView import displayRecord, allRecords, message, error, newRecord, userID
+from util.fileIO import CSVReader, CSVSaver
 import uuid
 
 class recordController:
+    def __init__(self):
+        self.filename = "data/Nitrogen oxide emissions by facility.csv"
+        self.records = []
+
     def reloadData(self):
         self.records = CSVReader(self.filename)
-        self.view.message("Data Reloaded")
+        message("Data Reloaded")
 
-    def save_data(self):
+    def saveData(self):
         new_filename = f"data/output_{uuid.uuid4()}.csv"
         CSVSaver(self.records, new_filename)
-        self.view.message(f"Data saved to {new_filename}")
+        message(f"Data saved to {new_filename}")
 
-    def display_single_record(self):
-        NPRIID = self.view.userID()
+    def displaySingleRecord(self):
+        NPRIID = userID()
         data = next((r for r in self.records if r.NPRID == NPRIID), None)
         if data:
-            self.view.displayRecord(data)
+            displayRecord(data)
         else:
-            self.view.error("Record not found.")
+            error("Record not found.")
 
-    def display_all_records(self):
-        self.view.allRecords(self.records)
+    def displayAllRecords(self):
+        allRecords(self.records)
+
+    def createRecord(self):
+        newData = newRecord()
+        record = Record(**newData)
+        self.records.append(record)
+        message("Record added.")
+
+    
