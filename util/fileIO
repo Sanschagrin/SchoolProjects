@@ -26,7 +26,7 @@ def CSVReader(csvData):
             for dataSet, row in enumerate(reader):
 
                 """Use only a few records as per assignment instructions"""
-                if dataSet >= 3:
+                if dataSet >= 100:
                     break
 
                 """Instantiate record object for current iteration of loop"""
