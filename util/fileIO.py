@@ -1,9 +1,12 @@
-#Gregory Mah 041114855
-#CST 8002 020 Programming Language Research Proj
-#Stanley Pieda
-#Due 2025-06-13
+"""
+Gregory Mah 041114855
+CST 8002 020 Programming Language Research Proj
+Stanley Pieda
+Due 2025-06-15
 
-#Import csv and record to read dataset and to store records as Record objects to be read.
+Import csv and record to read dataset and to store records as Record objects to be read.
+"""
+
 import csv
 import model.Record as Record
 
@@ -12,7 +15,15 @@ csvData = "data/Nitrogen oxide emissions by facility.csv"
 
 #Method to handle CSV reading using the variable csvData with dataset name
 def CSVReader(csvData):
-    """Initialize array to store record objects from the dataset"""
+    """
+    Initialize array to store record objects from the dataset
+    
+    Parameters:
+    csvData (str): CSV file path.
+
+    Returns:
+    A list of Record objects.
+    """
     records = []
 
     try:
@@ -52,6 +63,13 @@ def CSVReader(csvData):
     return records
 
 def CSVSaver(records, csvData):
+    """
+    Saves record objects to a new CSV file with a randomly generated UUID file name.
+
+    Parameters:
+        records (list): List of Record objects stored in memory from CSV file.
+        csvData (str): CSV file path.
+    """
 
     try: 
     

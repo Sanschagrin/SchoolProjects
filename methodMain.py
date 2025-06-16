@@ -1,13 +1,19 @@
-# main.py
-# Gregory Mah 041114855
-# CST 8002 020 Programming Language Research Proj
-# Stanley Pieda
-# Due 2025-06-15
+"""
+Main Runner: methodMain.py
+Author: Gregory Mah (041114855)
+Course: CST 8002 020 Programming Language Research Project
+Instructor: Stanley Pieda
+Due Date: 2025-06-15
 
+This class acts as the main entry point for the application, to interact with the controller.
+"""
 from controller.recordController import recordController
 from view.recordView import menu, message, error
 
 def main():
+    """
+    Main method to begin the application.
+    """
     controller = recordController()
     controller.reloadData()
 

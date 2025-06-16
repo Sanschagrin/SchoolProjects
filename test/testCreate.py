@@ -1,10 +1,30 @@
+"""
+Unit Test File: test_add_record.py
+Author: Gregory Mah (041114855)
+Course: CST 8002 020 Programming Language Research Project
+Professor: Stanley Pieda
+Due Date: 2025-06-15
+
+This file features unit testing for verifying the add record function
+in Record Controller.
+"""
+
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import unittest
 from model.Record import Record
 from controller.recordController import recordController
 
 class TestAddRecord(unittest.TestCase):
+    """
+    Unit test class to add a new record to the record list in memory.
+    """
     def test_add_new_record(self):
-        # Arrange
+        """
+        This class checks if new records can be added to the programs memory list.
+        Asserts if the count increases and checks if the NPRIID and facility are equal to the test parameters.
+        """
         controller = recordController()
         initial_count = len(controller.records)
 
