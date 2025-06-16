@@ -23,8 +23,8 @@ class recordController:
         message(f"Data saved to {new_filename}")
 
     def displaySingleRecord(self):
-        NPRIID = userID()
-        data = next((r for r in self.records if r.NPRID == NPRIID), None)
+        NPRIID = userID().strip()
+        data = next((r for r in self.records if str(r.NPRID).strip() == NPRIID), None)
         if data:
             displayRecord(data)
         else:
@@ -40,21 +40,19 @@ class recordController:
         message("Record added.")
 
     def editRecord(self):
-        NPRIID = userID()
-        record = next((r for r in self.records if r.NPRID == NPRIID), None)
+        NPRIID = userID().strip()
+        record = next((r for r in self.records if str(r.NPRID).strip() == NPRIID), None)
         if record:
-            print("Enter new values (leave blank to keep current):")
-            new_data = newRecord()
-            for key, value in new_data.items():
-                if value:
-                    setattr(record, key, value)
+            updated_data = newRecord(editing=True, old_record=record)
+            for key, value in updated_data.items():
+                setattr(record, key, value)
             message("Record updated.")
         else:
             error("Record not found.")
 
     def deleteRecord(self):
-        NPRIID = userID()
-        record = next((r for r in self.records if r.NPRID == NPRIID), None)
+        NPRIID = userID().strip()
+        record = next((r for r in self.records if str(r.NPRID).strip() == NPRIID), None)
         if record:
             self.records.remove(record)
             message("Record deleted.")

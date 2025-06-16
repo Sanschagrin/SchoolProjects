@@ -8,7 +8,7 @@ import csv
 import model.Record as Record
 
 #Variable to store name of dataset file to be used to access file
-csvData = "Nitrogen oxide emissions by facility.csv"
+csvData = "data/Nitrogen oxide emissions by facility.csv"
 
 #Method to handle CSV reading using the variable csvData with dataset name
 def CSVReader(csvData):
@@ -17,7 +17,7 @@ def CSVReader(csvData):
 
     try:
         """Open CSV file using csvData variable"""
-        with open(csvData) as file:
+        with open(csvData, newline='') as file:
 
             """Create reader variable to use csv Dictionary Reader to read CSV"""
             reader = csv.DictReader(file)
@@ -51,11 +51,11 @@ def CSVReader(csvData):
     #Return records array after being populated
     return records
 
-def CSVSaver(record, csvData):
+def CSVSaver(records, csvData):
 
     try: 
     
-        with open (csvData, mode ='w') as file:
+        with open (csvData, mode ='w', newline='') as file:
         
             writer = csv.writer(file)
 

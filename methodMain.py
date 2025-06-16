@@ -13,7 +13,7 @@ def main():
 
     while True:
         print("\n===============================")
-        print("Gregory Mah 041114855")  # Always show your name
+        print("Gregory Mah 041114855")  # Always show name
         print("===============================\n")
         menu()
 
