@@ -7,43 +7,26 @@ Due Date: 2025-06-15
 
 This class acts as the main entry point for the application, to interact with the controller.
 """
+from util.database_repository import DatabaseRepository
 from controller.recordController import recordController
-from view.recordView import menu, message, error
+from view.recordView import RecordView
 
 def main():
     """
     Main method to begin the application.
     """
-    controller = recordController()
-    controller.reloadData()
+    repo = DatabaseRepository("data/emissions.db")
+    view = RecordView()
 
-    while True:
-        print("\n===============================")
-        print("Gregory Mah 041114855")  # Always show name
-        print("===============================\n")
-        menu()
+    if not repo.load_records():
+        print("Database empty – seeding from CSV …")
+        from util.database import FileRepository
 
-        choice = input("\nEnter your choice (1-7, or q to quit): ").strip().lower()
+        seed_records = FileRepository("data/Nitrogen oxide emissions by facility.csv").load_records()
+        repo.save_records(seed_records)
+        print("Seed complete.\n")
 
-        if choice == "1":
-            controller.reloadData()
-        elif choice == "2":
-            controller.displaySingleRecord()
-        elif choice == "3":
-            controller.displayAllRecords()
-        elif choice == "4":
-            controller.createRecord()
-        elif choice == "5":
-            controller.editRecord()
-        elif choice == "6":
-            controller.deleteRecord()
-        elif choice == "7":
-            controller.saveData()
-        elif choice == "q":
-            message("Exiting program. Goodbye!")
-            break
-        else:
-            error("Invalid option. Please enter a number between 1-7 or 'q' to quit.")
+    recordController(repo, view).run()
 
 if __name__ == "__main__":
     main()
