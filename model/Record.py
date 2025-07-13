@@ -6,7 +6,11 @@ Due Date: 2025-06-15
 
 This class designs the model to be used as the data access object to interact with the database and the controller.
 """
+from __future__ import annotations
+from dataclasses import dataclass
 
+
+@dataclass(slots=True)
 class Record:
     """This is the record class that will represent objects from the Nitrogen oxide emissions by facility dataset."""
 

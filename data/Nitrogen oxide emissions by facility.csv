@@ -3061,7 +3061,7 @@ NPRI ID,Facility name,Company name,Address,City,Province,PostalCode,Latitude,Lon
 ",https://pollution-waste.canada.ca/national-release-inventory/2022/15739,2022
 15740,Calgary Energy Centre,Calgary Energy Centre No. 2 Inc.,14417 68 Street Northeast,Calgary,Alberta,T3N 1C6,51.18045,-113.93728,517.1,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0315740&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2022/15740,2022
-15742,Taqa Ggs 16-33-46-16w5	,Blue Sky Resources Ltd.,,Calgary,Alberta,,53.0139,-116.2586,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0315742&GoCTemplateCulture=en-CA
+15742,"Taqa Ggs 16-33-46-16w5	",Blue Sky Resources Ltd.,,Calgary,Alberta,,53.0139,-116.2586,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0315742&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2021/15742,2022
 15744,Wilson Creek Comp 6-18-43-4w5,Taqa North Ltd.,,N/A,Alberta,,52.7038,-114.5725,8.16,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0315744&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2022/15744,2022
@@ -6948,7 +6948,7 @@ NPRI ID,Facility name,Company name,Address,City,Province,PostalCode,Latitude,Lon
 ",https://pollution-waste.canada.ca/national-release-inventory/2022/22614,2022
 22619,Arc Comp Stn 06-36,ARC Resources,,,Alberta,,57.1972,-118.8224,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0322619&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2017/22619,2022
-22639,Macklin	08-06-040-27w3,Baytex Energy Ltd,,Macklin,Saskatchewan,,52.4128,-109.8665,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0322639&GoCTemplateCulture=en-CA
+22639,"Macklin	08-06-040-27w3",Baytex Energy Ltd,,Macklin,Saskatchewan,,52.4128,-109.8665,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0322639&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2015/22639,2022
 22646,Pembina Oil Battery 16-34-048-09w5,Baytex Energy Ltd,,N/A,Alberta,,53.1904,-115.2235,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0322646&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2021/22646,2022
@@ -8464,7 +8464,7 @@ NPRI ID,Facility name,Company name,Address,City,Province,PostalCode,Latitude,Lon
 ",https://pollution-waste.canada.ca/national-release-inventory/2022/26173,2022
 26176,Harmon Valley Oil Mwb 14-14-084-18w5,Baytex Energy Ltd,,N/A,Alberta,,56.28836,-116.73203,2.15,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0326176&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2022/26176,2022
-26181,Seal	16-08-084-18w5,Baytex Energy Ltd,,Seal,Alberta,,56.27078,-116.82339,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0326181&GoCTemplateCulture=en-CA
+26181,"Seal	16-08-084-18w5",Baytex Energy Ltd,,Seal,Alberta,,56.27078,-116.82339,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0326181&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2018/26181,2022
 26184,Harmon Valley 12-05-084-18w5,Baytex Energy Ltd,,Harmon Valley,Alberta,,56.25444,-116.817,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0326184&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2018/26184,2022
@@ -9172,7 +9172,7 @@ NPRI ID,Facility name,Company name,Address,City,Province,PostalCode,Latitude,Lon
 ",https://pollution-waste.canada.ca/national-release-inventory/2022/27719,2022
 27720,Canterra Ggs 06-02-037-10w5,Husky Oil Operations Limited,,Caroline,Alberta,,52.1498,-115.32571,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0327720&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2015/27720,2022
-27721,Ardmore	02-12-062-04w4,Baytex Energy Ltd,,Ardmore,Alberta,,54.34243,-110.46467,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0327721&GoCTemplateCulture=en-CA
+27721,"Ardmore	02-12-062-04w4",Baytex Energy Ltd,,Ardmore,Alberta,,54.34243,-110.46467,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0327721&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2015/27721,2022
 27722,Poundmaker 01-10-044-23w3,Baytex Energy Ltd,,Poundmaker,Saskatchewan,,52.77118,-109.24893,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0327722&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2016/27722,2022
@@ -10240,37 +10240,37 @@ NPRI ID,Facility name,Company name,Address,City,Province,PostalCode,Latitude,Lon
 ",https://pollution-waste.canada.ca/national-release-inventory/2018/28962,2022
 28963,Aoc Hangingstone Sagd,Athabasca Oil Corporation,,Fort McMurray,Alberta,,52.283,-111.2521,65.53,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328963&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2022/28963,2022
-28965,Harmon Valley	16-14-084-18w5,Baytex Energy Ltd,,Harmon Valley,Alberta,,56.28832,-116.71933,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328965&GoCTemplateCulture=en-CA
+28965,"Harmon Valley	16-14-084-18w5",Baytex Energy Ltd,,Harmon Valley,Alberta,,56.28832,-116.71933,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328965&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2018/28965,2022
-28967,Carruthers	15-18-047-24w3,Baytex Energy Ltd,,Carruthers,Saskatchewan,,53.05783,-109.50066,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328967&GoCTemplateCulture=en-CA
+28967,"Carruthers	15-18-047-24w3",Baytex Energy Ltd,,Carruthers,Saskatchewan,,53.05783,-109.50066,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328967&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2018/28967,2022
-28968,Harmon Valley	09-19-084-18w5,Baytex Energy Ltd,,Harmon Valley,Alberta,,56.29915,-116.82472,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328968&GoCTemplateCulture=en-CA
+28968,"Harmon Valley	09-19-084-18w5",Baytex Energy Ltd,,Harmon Valley,Alberta,,56.29915,-116.82472,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328968&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2018/28968,2022
 28969,Harmon Valley Oil Battery 09-15-082-18w5,Baytex Energy Ltd,,N/A,Alberta,,56.11079,-116.71887,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328969&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2021/28969,2022
-28970,Ardmore	09-09-062-03w4,Baytex Energy Ltd,,Ardmore,Alberta,,54.34962,-110.38351,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328970&GoCTemplateCulture=en-CA
+28970,"Ardmore	09-09-062-03w4",Baytex Energy Ltd,,Ardmore,Alberta,,54.34962,-110.38351,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328970&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2015/28970,2022
-28971,Harmon Valley	09-07-084-18w5,Baytex Energy Ltd,,Harmon Valley,Alberta,,56.27007,-116.82472,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328971&GoCTemplateCulture=en-CA
+28971,"Harmon Valley	09-07-084-18w5",Baytex Energy Ltd,,Harmon Valley,Alberta,,56.27007,-116.82472,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328971&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2015/28971,2022
-28972,Harmon Valley West	12-20-084-18w5,Baytex Energy Ltd,,Harmon Valley West,Alberta,,56.29916,-116.81781,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328972&GoCTemplateCulture=en-CA
+28972,"Harmon Valley West	12-20-084-18w5",Baytex Energy Ltd,,Harmon Valley West,Alberta,,56.29916,-116.81781,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328972&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2015/28972,2022
-28974,Harmon Valley	15-33-083-19w5,Baytex Energy Ltd,,Harmon Valley,Alberta,,56.24458,-116.93624,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328974&GoCTemplateCulture=en-CA
+28974,"Harmon Valley	15-33-083-19w5",Baytex Energy Ltd,,Harmon Valley,Alberta,,56.24458,-116.93624,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328974&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2018/28974,2022
-28975,Seal	16-35-083-19w5,Baytex Energy Ltd,,Seal,Alberta,,56.24458,-116.87729,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328975&GoCTemplateCulture=en-CA
+28975,"Seal	16-35-083-19w5",Baytex Energy Ltd,,Seal,Alberta,,56.24458,-116.87729,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328975&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2018/28975,2022
 28977,Reno 9-21-79-20w5,Baytex Energy Ltd,,Reno,Alberta,,55.86411,-117.0542,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328977&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2018/28977,2022
-28978,Golden Lake	13-11-048-24w3,Baytex Energy Ltd,,Golden Lake,Saskatchewan,,53.13059,-109.41511,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328978&GoCTemplateCulture=en-CA
+28978,"Golden Lake	13-11-048-24w3",Baytex Energy Ltd,,Golden Lake,Saskatchewan,,53.13059,-109.41511,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328978&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2018/28978,2022
-28979,Seal	03-16-082-18w5,Baytex Energy Ltd,,Seal,Alberta,,56.10354,-116.75779,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328979&GoCTemplateCulture=en-CA
+28979,"Seal	03-16-082-18w5",Baytex Energy Ltd,,Seal,Alberta,,56.10354,-116.75779,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328979&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2018/28979,2022
-28980,Buzzard	09-26-047-26w3,Baytex Energy Ltd,,Buzzard,Saskatchewan,,53.08347,-109.68963,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328980&GoCTemplateCulture=en-CA
+28980,"Buzzard	09-26-047-26w3",Baytex Energy Ltd,,Buzzard,Saskatchewan,,53.08347,-109.68963,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328980&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2015/28980,2022
-28981,Tangent	08-20-080-21w5,Baytex Energy Ltd,,Tangent,Alberta,,55.947017,-117.240883,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328981&GoCTemplateCulture=en-CA
+28981,"Tangent	08-20-080-21w5",Baytex Energy Ltd,,Tangent,Alberta,,55.947017,-117.240883,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328981&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2018/28981,2022
-28982,Buzzard	01-26-047-26w3,Baytex Energy Ltd,01-26-047-26w3,Buzzard,Saskatchewan,,53.07625,-109.68963,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328982&GoCTemplateCulture=en-CA
+28982,"Buzzard	01-26-047-26w3",Baytex Energy Ltd,01-26-047-26w3,Buzzard,Saskatchewan,,53.07625,-109.68963,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328982&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2015/28982,2022
-28985,Harmon Valley	16-13-084-18w5,Baytex Energy Ltd,,Harmon Valley,Alberta,,56.28829,-116.69298,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328985&GoCTemplateCulture=en-CA
+28985,"Harmon Valley	16-13-084-18w5",Baytex Energy Ltd,,Harmon Valley,Alberta,,56.28829,-116.69298,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328985&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2018/28985,2022
 28989,South Pouce 13-09-078-12 W6m,Birchcliff Energy Ltd.,,South Pouce,Alberta,,55.75037,-119.80681,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0328989&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2016/28989,2022
@@ -11810,7 +11810,7 @@ NPRI ID,Facility name,Company name,Address,City,Province,PostalCode,Latitude,Lon
 ",https://pollution-waste.canada.ca/national-release-inventory/2022/30795,2022
 30798,Copper Mountain Mine,Copper Mountain Mine (BC) Ltd.,6500 Copper Mountain Road,Princeton,British Columbia,V0X 1W0,49.34556,-120.51,59.79,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0330798&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2022/30798,2022
-30809,Takumi Stamping St. Thomas,•	Emboutissage Takumi Canada Inc./Takumi Stamping Canada Inc,100 Dennis Road,St. Thomas,Ontario,N5P 0B6,42.80324,-81.15319,0.13,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0330809&GoCTemplateCulture=en-CA
+30809,Takumi Stamping St. Thomas,"•	Emboutissage Takumi Canada Inc./Takumi Stamping Canada Inc",100 Dennis Road,St. Thomas,Ontario,N5P 0B6,42.80324,-81.15319,0.13,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0330809&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2022/30809,2022
 30812,Pc Louise 12-08,Enercapita Energy Ltd.,600 - 435 Fourth Avenue Southwest,Two Creek,Alberta,T2P 3A8,54.613857,-116.238479,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0330812&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2019/30812,2022
@@ -13988,7 +13988,7 @@ NPRI ID,Facility name,Company name,Address,City,Province,PostalCode,Latitude,Lon
 ",https://pollution-waste.canada.ca/national-release-inventory/2021/33036,2022
 33038,Highwood Senex (02-02-22-094-04w5),Blue Sky Resources Ltd.,,Calgary,Alberta,,56.54,-115.256,0.36,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0333038&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2022/33038,2022
-33039,Mark et Al Wembley 16-24-72-7w6	,Blue Sky Resources Ltd.,,Calgary,Alberta,,55.5,-119.18,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0333039&GoCTemplateCulture=en-CA
+33039,"Mark et Al Wembley 16-24-72-7w6	",Blue Sky Resources Ltd.,,Calgary,Alberta,,55.5,-119.18,,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0333039&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2021/33039,2022
 33041,2-25-043-23w4,Ember Resources Inc.,400 3,Calgary,Alberta,T2P 4H2,52.72851,-113.206,29.21,Tonnes (t),"http://indicators-map.canada.ca/App/Detail?id=0333041&GoCTemplateCulture=en-CA
 ",https://pollution-waste.canada.ca/national-release-inventory/2022/33041,2022
