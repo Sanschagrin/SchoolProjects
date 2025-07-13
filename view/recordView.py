@@ -8,49 +8,40 @@ Due Date: 2025-06-15
 Used to create input/output view logic to the user interface and get input.
 """
 
-def welcome(me = "Gregory Mah 41114855"):
-    """
-    Print welcome message.
-    """
-    print(f"Welcome to the menu")
-    print(f"By {me}\n")
+from typing import List, Optional
 
-def menu():
-    """
-    Display user options to user to prompt user input.
-    """
-    print("Menu")
-    print("1. Reload file: ")
-    print("2. Select single record: ")
-    print("3. Select multiple records: ")
-    print("4. Create new record: ")
-    print("5. Edit a record: ")
-    print("6. Delete a record: ")
-    print("7. Save data to new file: ")
+from model.Record import Record
 
-def userID():
-    """
-    Display prompt for NPRIID for identifying a record.
-    
-    Returns:
-        STR: NPRIID inputted by user.
-    """
-    return input("Enter NPRIID of your selected record: ")
 
-def allRecords(records):
-    """
-    Print many records.
+class RecordView:
+    """Console view layer"""
 
-    Parameters:
-        records (list): List of objects from memory list.
-    """
-    if not records:
-        print("File is empty")
-        return
-    for record in records:
-        print(record)
+    def __init__(self, author: str = "Gregory Mah 041114855") -> None:
+        self.author = author
 
-def newRecord(editing=False, old_record=None):
+
+    def show_welcome(self): 
+        print(f"Welcome to the Nitrogen-Oxide Records App — {self.author}\n")
+
+    def show_menu(self): 
+        print("\n===============================")
+        print(self.author)
+        print("===============================")
+        print("1  Reload from database")
+        print("2  Display a single record")
+        print("3  Display ALL records")
+        print("4  Create a new record")
+        print("5  Edit a record")
+        print("6  Delete a record")
+        print("q  Quit")
+
+    @staticmethod
+    def get_choice() -> str:
+        return input("\nEnter choice: ").strip().lower()
+
+    @staticmethod
+    def prompt_npri_id() -> str:
+        return input("Enter NPRI ID: ").strip()
     """
     Display prompt to edit or create record.
 
@@ -59,50 +50,61 @@ def newRecord(editing=False, old_record=None):
         old_record (Record): record values for editing existing fields.
 .
     """
-    print("Enter record details below: ")
-    return {
-        "NPRID": input("NPRIID: ") or (old_record.NPRID if editing else ""),
-        "facility": input("Facility: ") or (old_record.facility if editing else ""),
-        "company": input("Company: ") or (old_record.company if editing else ""),
-        "address": input("Address: ") or (old_record.address if editing else ""),
-        "city": input("City: ") or (old_record.city if editing else ""),
-        "province": input("Province: ") or (old_record.province if editing else ""),
-        "postal": input("Postal Code: ") or (old_record.postal if editing else ""),
-        "lat": input("Latitude: ") or (old_record.lat if editing else ""),
-        "long": input("Longitude: ") or (old_record.long if editing else ""),
-        "emissions": input("Emission Type: ") or (old_record.emissions if editing else ""),
-        "units": input("Emission Units: ") or (old_record.units if editing else ""),
-        "details": input("Details: ") or (old_record.details if editing else ""),
-        "info": input("Information: ") or (old_record.info if editing else ""),
-        "year": input("Year: ") or (old_record.year if editing else ""),
-    }
+    def prompt_record(self, *, editing: bool = False, old: Optional[Record] = None) -> dict[str, str]:
+        def _ask(label: str, default: str = "") -> str:
+            prompt = f"{label} [{default}]: " if editing else f"{label}: "
+            return input(prompt).strip() or default
 
-def displayRecord(record):
+        return {
+            "NPRID": _ask("NPRI ID", old.NPRID if editing and old else ""),
+            "facility": _ask("Facility", old.facility if editing and old else ""),
+            "company": _ask("Company", old.company if editing and old else ""),
+            "address": _ask("Address", old.address if editing and old else ""),
+            "city": _ask("City", old.city if editing and old else ""),
+            "province": _ask("Province", old.province if editing and old else ""),
+            "postal": _ask("Postal", old.postal if editing and old else ""),
+            "lat": _ask("Latitude", old.lat if editing and old else ""),
+            "long": _ask("Longitude", old.long if editing and old else ""),
+            "emissions": _ask("Emissions", old.emissions if editing and old else ""),
+            "units": _ask("Units", old.units if editing and old else ""),
+            "details": _ask("Details", old.details if editing and old else ""),
+            "info": _ask("Info", old.info if editing and old else ""),
+            "year": _ask("Year", old.year if editing and old else ""),
+        }
+
     """
     Print single Record.
 
     Parameters:
         record (Record): record object.
     """
-    print("Record Details")
-    print (record)
+    @staticmethod
+    def display_record(rec: Record):
+        print("\nRecord Details")
+        print(rec)
 
-def message(msg):
+    @staticmethod
+    def display_records(records: List[Record]):
+        if not records:
+            print("No records available.")
+            return
+        for rec in records:
+            print(rec)
     """
     Print message regarding operation.
 
     Parameters:
         msg (str): displayed message.
     """
-    print(f"Information: {msg}"
-    )
-
-def error(msg):
+    @staticmethod
+    def info(msg: str):
+        print(f"INFO: {msg}")
     """
     Print error message regarding operation.
 
     Parameters:
         msg (str): displayed error.
     """
-    print(f"ERROR: {msg}"
-          )
+    @staticmethod
+    def error(msg: str):
+        print(f"ERROR: {msg}")
