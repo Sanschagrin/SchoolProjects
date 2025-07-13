@@ -1,97 +1,80 @@
-import sqlite3
-from contextlib import closing
-from model.Record import Record       
+import csv
+import uuid
+from pathlib import Path
+from typing import List, Optional
+
+from model.Record import Record
+
 
 class FileRepository:
+    HEADERS = [
+        "NPRI ID",
+        "Facility name",
+        "Company name",
+        "Address",
+        "City",
+        "Province",
+        "PostalCode",
+        "Latitude",
+        "Longitude",
+        "Emissions",
+        "Units",
+        "Facility details",
+        "Facility information",
+        "Report year",
+    ]
 
-    DB_NAME = "data/emissions.db"
+    def __init__(self, filename: str | Path, max_records: Optional[int] = None):
+        self.filename = Path(filename)
+        self.max_records = max_records  # None ⇒ no limit
 
+    def load_records(self) -> List[Record]:
+        records: List[Record] = []
+        with self.filename.open(newline="") as fh:
+            reader = csv.DictReader(fh)
+            for idx, row in enumerate(reader):
+                if self.max_records is not None and idx >= self.max_records:
+                    break
+                records.append(
+                    Record(
+                        NPRID=row["NPRI ID"].strip(),
+                        facility=row["Facility name"],
+                        company=row["Company name"],
+                        address=row["Address"],
+                        city=row["City"],
+                        province=row["Province"],
+                        postal=row["PostalCode"],
+                        lat=row["Latitude"],
+                        long=row["Longitude"],
+                        emissions=row["Emissions"],
+                        units=row["Units"],
+                        details=row["Facility details"],
+                        info=row["Facility information"],
+                        year=row["Report year"],
+                    )
+                )
+        return records
 
-    def _get_conn():
-        """Return a new connection with rows as dict‑like objects."""
-        conn = sqlite3.connect(DB_NAME)
-        conn.row_factory = sqlite3.Row     
-        return conn
-
-
-    def init_schema() -> None:
-        """Create the table once (called at start‑up)."""
-        with closing(_get_conn()) as conn, conn:
-            conn.execute("""
-                CREATE TABLE IF NOT EXISTS emissions (
-                    NPRID     TEXT PRIMARY KEY,
-                    facility  TEXT,
-                    company   TEXT,
-                    address   TEXT,
-                    city      TEXT,
-                    province  TEXT,
-                    postal    TEXT,
-                    lat       REAL,
-                    long      REAL,
-                    emissions REAL,
-                    units     TEXT,
-                    details   TEXT,
-                    info      TEXT,
-                    year      INTEGER
-                );
-            """)
-
-
-
-    def insert(record: Record) -> None:
-        """Insert a new Record (raises sqlite3.IntegrityError if NPRID exists)."""
-        with closing(_get_conn()) as conn, conn:
-            conn.execute("""
-                INSERT INTO emissions VALUES
-                (:NPRID, :facility, :company, :address, :city, :province, :postal,
-                :lat, :long, :emissions, :units, :details, :info, :year)
-            """, vars(record))                       
-
-    def fetch_one(nprid: str) -> Record | None:
-        with closing(_get_conn()) as conn:
-            row = conn.execute(
-                "SELECT * FROM emissions WHERE NPRID = ?", (nprid,)
-            ).fetchone()
-            return Record(**row) if row else None
-
-
-    def fetch_all() -> list[Record]:
-        with closing(_get_conn()) as conn:
-            rows = conn.execute("SELECT * FROM emissions").fetchall()
-        return [Record(**row) for row in rows]
-
-
-    def update(record: Record) -> bool:
-        with closing(_get_conn()) as conn, conn:
-            cur = conn.execute("""
-                UPDATE emissions SET
-                facility=:facility, company=:company, address=:address,
-                city=:city, province=:province, postal=:postal,
-                lat=:lat, long=:long, emissions=:emissions, units=:units,
-                details=:details, info=:info, year=:year
-                WHERE NPRID=:NPRID
-            """, vars(record))
-            return cur.rowcount == 1               
-
-
-    def delete(nprid: str) -> bool:
-        with closing(_get_conn()) as conn, conn:
-            cur = conn.execute("DELETE FROM emissions WHERE NPRID = ?", (nprid,))
-            return cur.rowcount == 1
-        
-        # util/database.py  (append below the other code)
-
-    def import_csv_once(csv_path: str) -> None:
-        """
-        Populate the DB the first time the program runs.
-        Does nothing if the table already contains rows.
-        """
-        if fetch_all():          # table already has data
-            return
-
-        from util.fileIO import CSVReader
-        for record in CSVReader(csv_path):
-            try:
-                insert(record)
-            except sqlite3.IntegrityError:
-                pass            # skip duplicates
+    def save_records(self, records: List[Record]):
+        outfile = self.filename.parent / f"output_{uuid.uuid4()}.csv"
+        with outfile.open("w", newline="") as fh:
+            writer = csv.writer(fh)
+            writer.writerow(self.HEADERS)
+            for r in records:
+                writer.writerow([
+                    r.NPRID,
+                    r.facility,
+                    r.company,
+                    r.address,
+                    r.city,
+                    r.province,
+                    r.postal,
+                    r.lat,
+                    r.long,
+                    r.emissions,
+                    r.units,
+                    r.details,
+                    r.info,
+                    r.year,
+                ])
+        return outfile

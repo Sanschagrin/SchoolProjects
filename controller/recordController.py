@@ -25,7 +25,7 @@ class RepositoryProtocol(Protocol):
 
     def delete_record(self, npri_id: str) -> bool: ...
 
-class recordController:
+class RecordController:
     """
     Class to control Record objects and their interactions with the view/model.
     """
@@ -37,30 +37,30 @@ class recordController:
         self.view = view
         self.records: List[Record] = []
 
-        def run(self):  
-            self.reload_data()
-            self.view.show_welcome()
+    def run(self):  
+        self.reloadData()
+        self.view.show_welcome()
 
-            while True:
-                self.view.show_menu()
-                match self.view.get_choice():
-                    case "1":
-                        self.reload_data()
-                    case "2":
-                        self.display_single()
-                    case "3":
-                        self.display_all()
-                    case "4":
-                        self.create()
-                    case "5":
-                        self.edit()
-                    case "6":
-                        self.delete()
-                    case "q":
-                        self.view.info("Goodbye!")
-                        break
-                    case _:
-                        self.view.error("Invalid option.")
+        while True:
+            self.view.show_menu()
+            match self.view.get_choice():
+                case "1":
+                    self.reloadData()
+                case "2":
+                    self.displaySingleRecord()
+                case "3":
+                    self.displayAllRecords()
+                case "4":
+                    self.createRecord()
+                case "5":
+                    self.editRecord()
+                case "6":
+                    self.deleteRecord()
+                case "q":
+                    self.view.info("Goodbye!")
+                    break
+                case _:
+                    self.view.error("Invalid option.")
 
     def reloadData(self):
         """

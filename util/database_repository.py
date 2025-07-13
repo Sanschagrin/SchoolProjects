@@ -15,7 +15,7 @@ class DatabaseRepository:
 
     TABLE_NAME = "emissions"
 
-    def __init__(self, db_path: str | Path, *, max_records: int = 100):
+    def __init__(self, db_path: str | Path, *, max_records: Optional[int] = None):
         self.db_path = Path(db_path)
         self.max_records = max_records
         self._ensure_table()
@@ -23,9 +23,12 @@ class DatabaseRepository:
 
     def load_records(self) -> List[Record]:
         with self._connect() as con:
-            cur = con.execute(
-                f"SELECT * FROM {self.TABLE_NAME} LIMIT ?", (self.max_records,)
-            )
+            sql = f"SELECT * FROM {self.TABLE_NAME}"
+            params: tuple = ()
+            if self.max_records is not None:
+                sql += " LIMIT ?"
+                params = (self.max_records,)
+            cur = con.execute(sql, params)
             return [self._row_to_record(row) for row in cur.fetchall()]
 
     def insert_record(self, record: Record) -> None:
