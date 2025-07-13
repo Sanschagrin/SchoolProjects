@@ -9,86 +9,126 @@ This class is the controller that handles logic for reading, creating, editing,
 deleting, and saving records using the Record model. Anything that requires interaction with
 the database is validated here.
 """
-
+from typing import List, Optional, Protocol
 from model.Record import Record
-from view.recordView import displayRecord, allRecords, message, error, newRecord, userID
+from view.recordView import RecordView
 from util.fileIO import CSVReader, CSVSaver
 import uuid
+
+class RepositoryProtocol(Protocol):
+    """Narrow controller expectations"""
+
+    def load_records(self) -> List[Record]: ...
+
+    def insert_record(self, record: Record) -> None: ...
+
+    def update_record(self, record: Record) -> bool: ...
+
+    def delete_record(self, npri_id: str) -> bool: ...
 
 class recordController:
     """
     Class to control Record objects and their interactions with the view/model.
     """
-    def __init__(self):
+    def __init__(self, repo: RepositoryProtocol, view: RecordView):
         """
         Initialize controller with Nitrogen CSV file and empty list.
         """
-        self.filename = "data/Nitrogen oxide emissions by facility.csv"
-        self.records = []
+        self.repo = repo
+        self.view = view
+        self.records: List[Record] = []
+
+        def run(self):  
+            self.reload_data()
+            self.view.show_welcome()
+
+            while True:
+                self.view.show_menu()
+                match self.view.get_choice():
+                    case "1":
+                        self.reload_data()
+                    case "2":
+                        self.display_single()
+                    case "3":
+                        self.display_all()
+                    case "4":
+                        self.create()
+                    case "5":
+                        self.edit()
+                    case "6":
+                        self.delete()
+                    case "q":
+                        self.view.info("Goodbye!")
+                        break
+                    case _:
+                        self.view.error("Invalid option.")
 
     def reloadData(self):
         """
         Reload CSV file data using CSVReader method.
         """
-        self.records = CSVReader(self.filename)
-        message("Data Reloaded")
+        self.records = self.repo.load_records()
+        self.view.info("Data Reloaded")
 
-    def saveData(self):
-        """
-        Save data to a file with a UUID name using CSVSaver.
-        """
-        new_filename = f"data/output_{uuid.uuid4()}.csv"
-        CSVSaver(self.records, new_filename)
-        message(f"Data saved to {new_filename}")
+
+
+    def _find_in_memory(self, npri_id: str) -> Optional[Record]:
+        return next((r for r in self.records if r.NPRID == npri_id), None)
 
     def displaySingleRecord(self):
         """
         Display single record using inputed NPRIID.
         """
-        NPRIID = userID().strip()
-        data = next((r for r in self.records if str(r.NPRID).strip() == NPRIID), None)
-        if data:
-            displayRecord(data)
+        npri = self.view.prompt_npri_id()
+        rec = self._find_in_memory(npri)
+        if rec:
+            self.view.display_record(rec)
         else:
-            error("Record not found.")
+            self.view.error("Record not found.")
 
     def displayAllRecords(self):
         """
         Display many records using the view and fileIO.
         """
-        allRecords(self.records)
+        self.view.display_records(self.records)
 
     def createRecord(self):
         """
         Get input to fill fields and add a record to the list.
         """
-        newData = newRecord()
-        record = Record(**newData)
-        self.records.append(record)
-        message("Record added.")
+        data = self.view.prompt_record()
+        rec = Record(**data)
+        try:
+            self.repo.insert_record(rec)
+            self.records.append(rec) 
+            self.view.info("Record added to database.")
+        except Exception as exc:  
+            self.view.error(str(exc))
 
     def editRecord(self):
         """
         Edit existing records based on inputted NPRIID.
         """
-        NPRIID = userID().strip()
-        record = next((r for r in self.records if str(r.NPRID).strip() == NPRIID), None)
-        if record:
-            updated_data = newRecord(editing=True, old_record=record)
-            for key, value in updated_data.items():
-                setattr(record, key, value)
-            message("Record updated.")
+        npri = self.view.prompt_npri_id()
+        rec = self._find_in_memory(npri)
+        if not rec:
+            self.view.error("Record not found.")
+            return
+        updates = self.view.prompt_record(editing=True, old=rec)
+        for k, v in updates.items():
+            setattr(rec, k, v)
+        if self.repo.update_record(rec):
+            self.view.info("Record updated.")
         else:
-            error("Record not found.")
+            self.view.error("Update failed – check NPRID.")
 
     def deleteRecord(self):
         """
         Delete existing records based on inputted NPRIID.
         """
-        NPRIID = userID().strip()
-        record = next((r for r in self.records if str(r.NPRID).strip() == NPRIID), None)
-        if record:
-            self.records.remove(record)
-            message("Record deleted.")
+        npri = self.view.prompt_npri_id()
+        if self.repo.delete_record(npri):
+            self.records = [r for r in self.records if r.NPRID != npri]
+            self.view.info("Record deleted.")
         else:
-            error("Record not found.")
+            self.view.error("Delete failed – NPRID not found.")
