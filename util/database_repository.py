@@ -94,7 +94,7 @@ class DatabaseRepository:
 
     # ---------- internal helpers ----------
     def _connect(self):
-        return sqlite3.connect(self.db_path)
+        return sqlite3.connect(self.db_path, uri=True)
 
     def _ensure_table(self) -> None:
         with self._connect() as con:
