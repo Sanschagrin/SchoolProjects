@@ -17,13 +17,22 @@ class RecordView:
     """Console view layer"""
 
     def __init__(self, author: str = "Gregory Mah 041114855") -> None:
+        """
+        Initialization method to display Author name.
+        """
         self.author = author
 
 
     def show_welcome(self): 
+        """
+        Method used to display welcome message.
+        """
         print(f"Welcome to the Nitrogen-Oxide Records App — {self.author}\n")
 
     def show_menu(self): 
+        """
+        Method used to display options for user interactions.
+        """
         print("\n===============================")
         print(self.author)
         print("===============================")
@@ -37,20 +46,27 @@ class RecordView:
 
     @staticmethod
     def get_choice() -> str:
+        """
+        Method used to get input from user.
+        """
         return input("\nEnter choice: ").strip().lower()
 
     @staticmethod
     def prompt_npri_id() -> str:
+        """
+        Method used to display prompt for NPRIID and to get user input.
+        """
         return input("Enter NPRI ID: ").strip()
-    """
-    Display prompt to edit or create record.
 
-    Parameters:
-        editing (boolean): flag to indicate this as a editing or creation operation.
-        old_record (Record): record values for editing existing fields.
-.
-    """
     def prompt_record(self, *, editing: bool = False, old: Optional[Record] = None) -> dict[str, str]:
+        """
+        Display prompt to edit or create record.
+
+        Parameters:
+            editing (boolean): flag to indicate this as a editing or creation operation.
+            old_record (Record): record values for editing existing fields.
+    .
+        """
         def _ask(label: str, default: str = "") -> str:
             prompt = f"{label} [{default}]: " if editing else f"{label}: "
             return input(prompt).strip() or default
@@ -72,19 +88,25 @@ class RecordView:
             "year": _ask("Year", old.year if editing and old else ""),
         }
 
-    """
-    Print single Record.
-
-    Parameters:
-        record (Record): record object.
-    """
     @staticmethod
     def display_record(rec: Record):
+        """
+        Print single Record.
+
+        Parameters:
+            record (Record): record object.
+        """
         print("\nRecord Details")
         print(rec)
 
     @staticmethod
     def display_records(records: List[Record]):
+        """
+        Print the record list to the user.
+
+        Parameters:
+            records (List[Record]): List of records saved to be displayed.
+        """
         if not records:
             print("No records available.")
             return

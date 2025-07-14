@@ -10,18 +10,20 @@ This class acts as the main entry point for the application, to interact with th
 from util.database_repository import DatabaseRepository
 from controller.recordController import RecordController
 from view.recordView import RecordView
-from util.database import FileRepository
+from util.file_repository import FileRepository
 
 def main():
     """
-    Main method to begin the application.
+    Main method that starts the application. It initilizes the controller, view and repositories. 
+
+    If database is empty is empty it will load the CSV data into the database.
     """
     repo = DatabaseRepository("data/emissions.db", max_records=None)
     view = RecordView()
 
     if not repo.load_records():
         print("Database empty – seeding from CSV …")
-        from util.database import FileRepository
+        from util.file_repository import FileRepository
 
         seed_records = FileRepository("data/Nitrogen oxide emissions by facility.csv", max_records=None).load_records()
         repo.save_records(seed_records)

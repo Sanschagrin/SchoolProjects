@@ -5,7 +5,7 @@ Course: CST 8002 020 Programming Language Research Project
 Professor: Stanley Pieda
 Due Date: 2025-07-13
 
-This file features unit testing for verifying the database is being utilized
+This file handles unit testing to verify database connection.
 """
 import unittest
 
@@ -14,14 +14,24 @@ from util.database_repository import DatabaseRepository
 
 
 class TestDatabase(unittest.TestCase):
-    """Basic CRUD test on an in‑memory SQLite DB."""
+    """
+    Class for unit testing CRUD operations against database using model and repository.
+    """
 
     def setUp(self):
-        # Each test gets a fresh, in‑memory database
+        """
+        Method to create database repository for each test.
+        """
         self.repo = DatabaseRepository("file::memory:?cache=shared", max_records=None)
 
-    # ---------- insert + load ----------
     def test_insert_and_load(self):
+        """
+        Method used to test record inserting and reloading from the database.
+
+        Verifies:
+        - Records are able to be inserted.
+        - New record can be reloaded with the same data.
+        """
         rec = Record(
             NPRID="40000",
             facility="Tuna",
@@ -45,6 +55,13 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(loaded[0].NPRID, "40000")
 
     def test_update_and_delete(self):
+        """
+        Method to test updating and deleting.
+
+        Verifies:
+        - That a record can be updated.
+        - That records can be deleted.
+        """
         rec = Record(
             NPRID="50000",
             facility="Salmon Facility",
@@ -76,5 +93,5 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(len(self.repo.load_records()), 0)
 
 
-if __name__ == "__main__":  # pragma: no cover
+if __name__ == "__main__": 
     unittest.main()

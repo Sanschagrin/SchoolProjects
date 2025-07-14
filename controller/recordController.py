@@ -38,6 +38,9 @@ class RecordController:
         self.records: List[Record] = []
 
     def run(self):  
+        """
+        Method to display welcome message and display user options to select which operation to perform.
+        """
         self.reloadData()
         self.view.show_welcome()
 
@@ -72,6 +75,15 @@ class RecordController:
 
 
     def _find_in_memory(self, npri_id: str) -> Optional[Record]:
+        """
+        Method used to search loaded records for matching NPRID record.
+
+        Args:
+            npri_id (str): Indicates the ID that will identify the selected record.
+
+        Returns:
+            Optional[Record]: If a matching record is found data is displayed here.
+        """
         return next((r for r in self.records if r.NPRID == npri_id), None)
 
     def displaySingleRecord(self):

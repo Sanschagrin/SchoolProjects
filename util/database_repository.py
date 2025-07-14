@@ -8,20 +8,35 @@ from model.Record import Record
 
 
 class DatabaseRepository:
-    """SQLite table creation
+    """
+    Handles SQLite-based storage for emission records.
 
-    Creates table on launch and handles CRUD operations
+    Attributes: db_path (str): Indicates path to find the database.
+    max_records (Optional[int]): Inticates that all records are to be saved for the database to load.
     """
 
     TABLE_NAME = "emissions"
 
     def __init__(self, db_path: str | Path, *, max_records: Optional[int] = None):
+        """
+        Initialization method for the class and ensures the table exists.
+
+        Args:
+            db_path (str | Path): Indicates path to find the database.
+            max_records (Optional[int]): Inticates that all records are to be saved for the database to load.
+        """
         self.db_path = Path(db_path)
         self.max_records = max_records
         self._ensure_table()
 
 
     def load_records(self) -> List[Record]:
+        """
+        Method to load records from the database.
+
+        Returns:
+            List[Record]: List of saved row records.
+        """
         with self._connect() as con:
             sql = f"SELECT * FROM {self.TABLE_NAME}"
             params: tuple = ()
@@ -32,6 +47,12 @@ class DatabaseRepository:
             return [self._row_to_record(row) for row in cur.fetchall()]
 
     def insert_record(self, record: Record) -> None:
+        """
+        Method used to insert a record into the database.
+
+        Args:
+            record (Record): The record data to be added to the database.
+        """
         with self._connect() as con:
             con.execute(
                 f"""
@@ -44,6 +65,15 @@ class DatabaseRepository:
             )
 
     def update_record(self, record: Record) -> bool:
+        """
+        Method used to update existing database record.
+
+        Args:
+            record (Record): The data of the updated record.
+
+        Returns:
+            bool: Boolean to indicate if data has been updated or not.
+        """
         with self._connect() as con:
             cur = con.execute(
                 f"""
@@ -72,6 +102,15 @@ class DatabaseRepository:
             return cur.rowcount > 0
 
     def delete_record(self, npri_id: str) -> bool:
+        """
+        Method to delete a database record, indicated by NPRID number.
+
+        Args:
+            npri_id (str): NPRIID of the record.
+
+        Returns:
+            bool: Boolean to indicate if data has been deleted or not.
+        """
         with self._connect() as con:
             cur = con.execute(
                 f"DELETE FROM {self.TABLE_NAME} WHERE NPRID = ?", (npri_id,)
@@ -80,6 +119,12 @@ class DatabaseRepository:
 
     # bulk‑write helper – overwrite table contents (rarely needed now)
     def save_records(self, records: Iterable[Record]) -> None:
+        """
+        Method used to truncate the table and insert new records.
+
+        Args:
+            records (Iterable[Record]): Set of records to be saved into the database.
+        """
         with self._connect() as con:
             con.execute(f"DELETE FROM {self.TABLE_NAME}")
             con.executemany(
@@ -94,9 +139,18 @@ class DatabaseRepository:
 
     # ---------- internal helpers ----------
     def _connect(self):
+        """
+        Method to create SQLite database connection.
+
+        Returns:
+            sqlite3.Connection: SQLite connection object.
+        """
         return sqlite3.connect(self.db_path, uri=True)
 
     def _ensure_table(self) -> None:
+        """
+        Ensures database table exists.
+        """
         with self._connect() as con:
             con.execute(
                 f"""
@@ -121,6 +175,15 @@ class DatabaseRepository:
 
     @staticmethod
     def _row_to_record(row: sqlite3.Row | tuple) -> Record:
+        """
+        Method used to convert database rows to Records.
+
+        Args:
+            row (tuple): Row of data from the database.
+
+        Returns:
+            Record: Row of data represented as a Record.
+        """
         return Record(
             NPRID=row[0],
             facility=row[1],
@@ -140,6 +203,15 @@ class DatabaseRepository:
 
     @staticmethod
     def _record_to_tuple(record: Record) -> tuple:
+        """
+        Method to convert Records into tuples.
+
+        Args:
+            record (Record): The Record object.
+
+        Returns:
+            tuple: Field values displayed as a tuple.
+        """
         return (
             record.NPRID,
             record.facility,
