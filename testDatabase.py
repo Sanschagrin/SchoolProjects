@@ -81,7 +81,7 @@ class TestDatabase(unittest.TestCase):
         self.repo.insert_record(rec)
 
         # --- update ---
-        rec.facility = "Updated Facility"
+        rec.facility = "Tuna"
         self.assertTrue(self.repo.update_record(rec))
 
         reloaded = self.repo.load_records()
@@ -91,6 +91,7 @@ class TestDatabase(unittest.TestCase):
         self.assertTrue(self.repo.delete_record("50000"))
         self.assertTrue(self.repo.delete_record("40000"))
         self.assertEqual(len(self.repo.load_records()), 0)
+        print("Gregory Mah 041114855")
 
 
 if __name__ == "__main__": 
