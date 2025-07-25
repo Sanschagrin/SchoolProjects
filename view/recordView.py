@@ -42,6 +42,7 @@ class RecordView:
         print("4  Create a new record")
         print("5  Edit a record")
         print("6  Delete a record")
+        print("7  Search for a record")
         print("q  Quit")
 
     @staticmethod
@@ -112,6 +113,23 @@ class RecordView:
             return
         for rec in records:
             print(rec)
+
+    def prompt_filters(self):
+        """
+        Prompt for user inputs to indicate filters for fields.
+        Return dictionary pairs.
+        """
+        print("Enter filter values (leave blank to ignore a field):")
+        filters = {}
+        filters['NPRID'] = input("Filter by NPRIID: ").strip()
+        filters['facility'] = input("Filter by facility: ").strip()
+        filters['company'] = input("Filter by company: ").strip()
+        filters['city'] = input("Filter by city: ").strip()
+        filters['province'] = input("Filter by province: ").strip()
+        filters['value'] = input("Filter by value (exact match): ").strip()
+
+        filters = {k: v for k, v in filters.items() if v}
+        return filters
     """
     Print message regarding operation.
 

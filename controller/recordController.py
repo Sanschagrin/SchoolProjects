@@ -151,5 +151,5 @@ class RecordController:
         Method to search records.
         """
         filters = self.view.prompt_filters()
-        filtered = self.model.filter_by_criteria(filters)
+        filtered = self.repo.filter_by_criteria(filters)
         self.view.display_records(filtered)
