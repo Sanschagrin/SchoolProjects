@@ -121,13 +121,10 @@ class RecordView:
         """
         print("Enter filter values (leave blank to ignore a field):")
         filters = {}
-        filters['NPRID'] = input("Filter by NPRIID: ").strip()
         filters['facility'] = input("Filter by facility: ").strip()
         filters['company'] = input("Filter by company: ").strip()
         filters['city'] = input("Filter by city: ").strip()
         filters['province'] = input("Filter by province: ").strip()
-        filters['value'] = input("Filter by value (exact match): ").strip()
-
         filters = {k: v for k, v in filters.items() if v}
         return filters
     """

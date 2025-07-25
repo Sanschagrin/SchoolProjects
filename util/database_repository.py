@@ -228,3 +228,19 @@ class DatabaseRepository:
             record.info,
             record.year,
         )
+    def filter_by_criteria(self, filters: dict) -> List[Record]:
+        """
+        Return list of records matching all criteria in filters dict.
+        """
+        query = "SELECT * FROM emissions WHERE 1=1"
+        values = []
+
+        for field, value in filters.items():
+            if value.strip():
+                query += f" AND {field} LIKE ?"
+                values.append(f"%{value.strip()}%")
+
+        with self._connect() as con:
+            cur = con.execute(query, values)
+            rows = cur.fetchall()
+            return [self._row_to_record(row) for row in rows]
