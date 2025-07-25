@@ -59,6 +59,8 @@ class RecordController:
                     self.editRecord()
                 case "6":
                     self.deleteRecord()
+                case "7":
+                    self.filter_records()
                 case "q":
                     self.view.info("Goodbye!")
                     break
@@ -143,3 +145,11 @@ class RecordController:
             self.view.info("Record deleted.")
         else:
             self.view.error("Delete failed – NPRID not found.")
+
+    def filter_records(self):
+        """
+        Method to search records.
+        """
+        filters = self.view.prompt_filters()
+        filtered = self.model.filter_by_criteria(filters)
+        self.view.display_records(filtered)
